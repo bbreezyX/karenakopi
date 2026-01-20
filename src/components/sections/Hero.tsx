@@ -206,9 +206,6 @@ export const Hero = () => {
           </span>
         </motion.div>
       </div>
-
-      {/* Subtle Bottom Glow */}
-      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none" />
     </section>
   );
 };
