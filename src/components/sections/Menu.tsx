@@ -145,7 +145,7 @@ export const Menu = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "start start"],
+    offset: ["start end", "end end"],
   });
   const [activeIdx, setActiveIdx] = useState(0);
   const currentCategory = menuCategories[activeIdx];
@@ -173,14 +173,18 @@ export const Menu = () => {
         style={{
           opacity: useTransform(
             scrollYProgress,
-            [0, 0.05, 0.95, 1],
+            [0, 0.1, 0.9, 0.95],
             [0, 1, 1, 0],
           ),
-          y: useTransform(scrollYProgress, [0, 0.05, 0.95, 1], [40, 0, 0, 40]),
+          y: useTransform(
+            scrollYProgress,
+            [0, 0.1, 0.85, 0.95],
+            [40, 0, 0, 150],
+          ),
           scale: useTransform(
             scrollYProgress,
-            [0, 0.05, 0.95, 1],
-            [0.9, 1, 1, 0.9],
+            [0, 0.1, 0.9, 0.95],
+            [0.95, 1, 1, 0.95],
           ),
         }}
         className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[70] w-auto max-w-[90vw]"

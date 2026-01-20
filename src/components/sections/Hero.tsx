@@ -117,14 +117,36 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 1 }}
-            className="md:hidden flex flex-col items-center gap-1 mt-4"
+            className="md:hidden flex flex-col items-center gap-6 mt-8"
           >
-            <span className="font-handwriting text-accent text-5xl lowercase leading-none">
-              Flagship
-            </span>
-            <span className="font-display text-white/20 text-lg tracking-[0.4em] uppercase">
-              2024
-            </span>
+            <div className="flex flex-col items-center gap-1">
+              <span className="font-handwriting text-accent text-5xl lowercase leading-none">
+                Flagship
+              </span>
+              <span className="font-display text-white/20 text-lg tracking-[0.4em] uppercase">
+                2024
+              </span>
+            </div>
+
+            {/* Mobile-specific Scroll Hint */}
+            <motion.a
+              href="#menu-start"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2.2, duration: 1 }}
+              className="flex flex-col items-center gap-3 cursor-pointer group pointer-events-auto border-t border-white/5 pt-6"
+            >
+              <span className="font-display text-[9px] text-white/30 tracking-[0.4em] uppercase">
+                Explore
+              </span>
+              <div className="w-px h-12 bg-gradient-to-b from-accent to-transparent overflow-hidden">
+                <motion.div
+                  className="w-full h-full bg-white origin-top"
+                  animate={{ y: ["-100%", "100%"] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                />
+              </div>
+            </motion.a>
           </motion.div>
         </motion.div>
 
@@ -144,12 +166,13 @@ export const Hero = () => {
           </motion.div>
 
           {/* Center Scroll Hint */}
+          {/* Center Scroll Hint (Desktop Only) */}
           <motion.a
             href="#menu-start"
             initial={{ opacity: 0, scaleY: 0 }}
             animate={{ opacity: 1, scaleY: 1 }}
             transition={{ delay: 2.2, duration: 1 }}
-            className="flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto"
+            className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto"
           >
             <span className="font-display text-[9px] md:text-[10px] text-white/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
               Explore
