@@ -11,8 +11,8 @@ const images = [
   "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8c0E6h039voCBOJlAjGoVGS4xpcQbNF7klBb31TCc0GQuB4zflD0ci1yNRXNo4pq7c4E-ToFDAnRV-vHrT2_6MgStZtAw2zrOzapCucAEsOoAqxMFTLgmPciVgMtCa2DidlfaXsyRCDc=s2000",
   "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEYnDIIvIVH7OaYla0nIDxOCeM0TvgMbxU7mQiU83BXznvIe42Lgu73ESUfHkMpb8nJdkaN1yh8X0e1RiDzaJGxDDO0Xsf3RQTnD1XDSMcYRxjtPTl1aRp6E5sVRG3nXfL0-TqBA=s2000",
   "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzdUz4JhiTyQAgfLc3fbv8o6SMX8tMviQ_9K4oS0Y9JM3aDFdcX_n8XYFhAPrbQRfnCTu_oGG-K-R4vXp3ARE47CSJznhJ-pPRljr8MpUrF3xGYt4s15JomBkbPJDqppkXdnqyryw=s2000",
-  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwN_X_mAnF8U5_mY_U0n6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6=s2000", // Fallback pattern
-  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-X_mAnF8U5_mY_U0n6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6=s2000", // Fallback pattern
+  "/6.jpg", // Fallback pattern
+  "/7.jpg", // Fallback pattern
 ];
 
 export const Community = () => {

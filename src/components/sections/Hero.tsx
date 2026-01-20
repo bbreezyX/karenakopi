@@ -47,9 +47,6 @@ export const Hero = () => {
       ref={containerRef}
       className="relative h-screen flex flex-col items-center justify-center bg-black overflow-hidden px-6"
     >
-      {/* Texture Overlay */}
-      <div className="absolute inset-0 noise-overlay opacity-[0.03] pointer-events-none z-50" />
-
       <motion.div
         className="relative z-20 text-center select-none w-full max-w-[2000px] flex flex-col items-center justify-center pt-24 pb-20 md:pt-0 md:pb-0"
         initial="hidden"

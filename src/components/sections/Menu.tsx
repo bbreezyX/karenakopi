@@ -300,7 +300,7 @@ export const Menu = () => {
               </div>
 
               {/* Pricing Legend Header - Conditional Labels */}
-              <div className="flex justify-between items-end px-2 md:px-6 mb-8 border-b border-accent/20 pb-4">
+              <div className="flex justify-between items-end px-2 md:px-6 mb-8 border-b-2 border-accent/30 pb-4">
                 <div className="flex flex-col gap-0.5 md:gap-1">
                   <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold">
                     The Selection
