@@ -45,7 +45,7 @@ export const Products = () => {
     >
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none opacity-[0.03] select-none overflow-hidden">
-        <span className="font-display text-[30vw] uppercase leading-none text-black whitespace-nowrap">
+        <span className="font-display text-[30vw] uppercase leading-none text-black whitespace-nowrap gpu-accelerated">
           Inventory
         </span>
       </div>

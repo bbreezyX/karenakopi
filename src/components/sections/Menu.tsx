@@ -264,7 +264,7 @@ export const Menu = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
             >
-              <h1 className="font-display text-[25vw] md:text-[30vw] uppercase leading-none text-current whitespace-nowrap select-none rotate-90 md:rotate-0">
+              <h1 className="font-display text-[25vw] md:text-[30vw] uppercase leading-none text-current whitespace-nowrap select-none rotate-90 md:rotate-0 gpu-accelerated">
                 {currentCategory.title}
               </h1>
             </motion.div>

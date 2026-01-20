@@ -11,7 +11,7 @@ export const BrandStory = () => {
     >
       {/* Background Text Decor */}
       <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center pointer-events-none opacity-[0.02] select-none">
-        <span className="font-display text-[40vw] uppercase leading-none">
+        <span className="font-display text-[40vw] uppercase leading-none gpu-accelerated">
           Ritual
         </span>
       </div>
@@ -99,7 +99,7 @@ export const BrandStory = () => {
               whileInView={{ scale: 1 }}
               transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
               src="/cafeinterior.jpeg"
-              className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-2000 ease-in-out"
+              className="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-2000 ease-in-out gpu-accelerated"
               alt="Cafe Interior"
             />
 

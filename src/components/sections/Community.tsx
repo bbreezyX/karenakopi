@@ -19,12 +19,12 @@ export const Community = () => {
   return (
     <section className="bg-black py-24 md:py-48 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
-        <div className="relative text-center mb-32">
+        <div className="relative text-center mb-48">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 0.1, scale: 1 }}
             transition={{ duration: 1.5 }}
-            className="font-display text-8xl md:text-[15vw] leading-none uppercase tracking-tighter absolute inset-0 flex items-center justify-center pointer-events-none whitespace-nowrap"
+            className="font-display text-8xl md:text-[15vw] leading-none uppercase tracking-tighter absolute inset-0 flex items-center justify-center pointer-events-none whitespace-nowrap gpu-accelerated"
           >
             Our Ritual
           </motion.h2>
@@ -49,7 +49,7 @@ export const Community = () => {
               className={`aspect-square bg-gray-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer rounded-2xl md:rounded-[2rem] 
                 ${index % 4 === 1 ? "md:mt-12" : ""} 
                 ${index % 4 === 3 ? "md:mt-24" : ""}
-                ${index % 4 === 2 ? "md:-mt-6" : ""}
+                ${index % 4 === 2 ? "md:mt-8" : ""}
               `}
             >
               <motion.img

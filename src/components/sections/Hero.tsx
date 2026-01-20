@@ -48,7 +48,7 @@ export const Hero = () => {
       className="relative h-screen flex flex-col items-center justify-center bg-black overflow-hidden px-6"
     >
       <motion.div
-        className="relative z-20 text-center select-none w-full max-w-[2000px] flex flex-col items-center justify-center pt-24 pb-20 md:pt-0 md:pb-0"
+        className="relative z-20 text-center select-none w-full max-w-[2000px] flex flex-col items-center justify-center pt-24 pb-20 md:pt-0 md:pb-0 gpu-accelerated"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -67,7 +67,7 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] leading-[0.75] tracking-tighter text-white uppercase inline-block"
+                  className="font-display text-[26vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
                 >
                   {char}
                 </motion.span>
@@ -101,7 +101,7 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] leading-[0.75] tracking-tighter text-white uppercase inline-block"
+                  className="font-display text-[26vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
                 >
                   {char}
                 </motion.span>
@@ -174,13 +174,12 @@ export const Hero = () => {
           </motion.div>
 
           {/* Center Scroll Hint */}
-          {/* Center Scroll Hint (Desktop Only) */}
           <motion.a
             href="#menu"
             initial={{ opacity: 0, scaleY: 0 }}
             animate={{ opacity: 1, scaleY: 1 }}
             transition={{ delay: 2.2, duration: 1 }}
-            className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto"
+            className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0"
           >
             <span className="font-display text-[9px] md:text-[10px] text-white/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
               Explore
