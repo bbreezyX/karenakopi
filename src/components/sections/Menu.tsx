@@ -242,7 +242,7 @@ export const Menu = () => {
       </motion.div>
 
       {/* Main Content Area with Seamless Transitions */}
-      <div className="flex-grow relative overflow-hidden min-h-screen">
+      <div className="flex-grow relative overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.section
             key={activeIdx}
@@ -251,10 +251,10 @@ export const Menu = () => {
             exit={{ y: -100, opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "relative min-h-screen py-32 px-6 md:px-12 transition-colors duration-1000 overflow-hidden rounded-t-[48px] md:rounded-t-[100px] -mt-[48px] md:-mt-[100px] z-10",
+              "relative min-h-screen py-32 px-6 md:px-12 transition-colors duration-1000 overflow-hidden -mt-[48px] md:-mt-[100px] z-10",
               currentCategory.bg === "black"
-                ? "bg-black text-white"
-                : "bg-off-white text-black",
+                ? "bg-black text-white rounded-t-[48px] md:rounded-t-[100px]"
+                : "bg-off-white text-black rounded-[48px] md:rounded-[100px]",
             )}
           >
             {/* Background Narrative Title */}
@@ -300,7 +300,7 @@ export const Menu = () => {
               </div>
 
               {/* Pricing Legend Header - Conditional Labels */}
-              <div className="flex justify-between items-end px-2 md:px-6 mb-8 border-b-2 border-accent/30 pb-4">
+              <div className="flex justify-between items-end px-2 md:px-6 mb-8 pb-4">
                 <div className="flex flex-col gap-0.5 md:gap-1">
                   <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold">
                     The Selection
@@ -336,10 +336,10 @@ export const Menu = () => {
                       ease: [0.16, 1, 0.3, 1] as any,
                     }}
                     className={cn(
-                      "group relative flex justify-between items-start px-6 py-6 md:py-8 border-b transition-all duration-500 rounded-[2rem] cursor-default md:cursor-none",
+                      "group relative flex justify-between items-start px-6 py-6 md:py-8 transition-all duration-500 rounded-[2rem] cursor-default",
                       currentCategory.bg === "black"
-                        ? "border-white/5 hover:bg-white/[0.03] hover:border-transparent"
-                        : "border-black/5 hover:bg-black/[0.03] hover:border-transparent",
+                        ? "hover:bg-white/[0.03]"
+                        : "hover:bg-black/[0.03]",
                     )}
                   >
                     <div className="flex flex-col gap-1.5 md:gap-2 max-w-[70%]">
@@ -372,93 +372,87 @@ export const Menu = () => {
                 ))}
               </div>
             </div>
+
+            {/* Integrated Pricing Notice & Footer - Now part of the transition card */}
+            <div className="mt-20 pb-20">
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+                  {/* Service Note Card */}
+                  <div
+                    className={cn(
+                      "lg:col-span-7 p-8 md:p-10 rounded-[2rem] transition-all duration-700",
+                      currentCategory.bg === "black"
+                        ? "bg-white/[0.02]"
+                        : "bg-black/[0.02]",
+                    )}
+                  >
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      <h4 className="font-display text-accent text-lg md:text-xl uppercase tracking-widest">
+                        Service Notes
+                      </h4>
+                    </div>
+                    <p
+                      className={cn(
+                        "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700",
+                        currentCategory.bg === "black"
+                          ? "opacity-40"
+                          : "opacity-60",
+                      )}
+                    >
+                      * All prices are in Indonesian Rupiah (IDR) and exclude
+                      10% government tax. Prices displayed as Small / Large
+                      where applicable. Our signature blends are roasted
+                      in-house to ensure the highest quality and consistency in
+                      every cup. Please inform our staff of any allergies before
+                      ordering.
+                    </p>
+                  </div>
+
+                  {/* Resources & Engagement */}
+                  <div className="lg:col-span-5 flex flex-wrap gap-x-12 gap-y-10 pt-4 lg:pt-8">
+                    <div className="flex flex-col gap-4">
+                      <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold">
+                        Administrative
+                      </span>
+                      <div className="flex flex-col gap-4">
+                        <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center group text-left">
+                          Download PDF Menu
+                        </button>
+                        <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center group text-left">
+                          Terms of Service
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                      <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold">
+                        Connection
+                      </span>
+                      <div className="flex flex-col gap-4">
+                        <a
+                          href="#"
+                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
+                        >
+                          <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
+                          Instagram
+                        </a>
+                        <a
+                          href="#"
+                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
+                        >
+                          <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
+                          Inquiries
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.section>
         </AnimatePresence>
       </div>
-
-      {/* Pricing Notice & Footer */}
-      <section
-        className={cn(
-          "transition-colors duration-1000 py-24 px-6 md:px-12 border-t",
-          currentCategory.bg === "black"
-            ? "bg-black border-white/5 text-white"
-            : "bg-off-white border-black/5 text-black",
-        )}
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-            {/* Service Note Card */}
-            <div
-              className={cn(
-                "lg:col-span-7 p-8 md:p-10 rounded-[2rem] border transition-all duration-700",
-                currentCategory.bg === "black"
-                  ? "bg-white/[0.02] border-white/5"
-                  : "bg-black/[0.02] border-black/5",
-              )}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <h4 className="font-display text-accent text-lg md:text-xl uppercase tracking-widest">
-                  Service Notes
-                </h4>
-              </div>
-              <p
-                className={cn(
-                  "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700",
-                  currentCategory.bg === "black" ? "opacity-40" : "opacity-60",
-                )}
-              >
-                * All prices are in Indonesian Rupiah (IDR) and exclude 10%
-                government tax. Prices displayed as Small / Large where
-                applicable. Our signature blends are roasted in-house to ensure
-                the highest quality and consistency in every cup. Please inform
-                our staff of any allergies before ordering.
-              </p>
-            </div>
-
-            {/* Resources & Engagement */}
-            <div className="lg:col-span-5 flex flex-wrap gap-x-12 gap-y-10 pt-4 lg:pt-8">
-              <div className="flex flex-col gap-4">
-                <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold">
-                  Administrative
-                </span>
-                <div className="flex flex-col gap-4">
-                  <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group text-left">
-                    <span className="w-8 h-px bg-current opacity-20 group-hover:w-12 group-hover:bg-accent group-hover:opacity-100 transition-all" />
-                    Download PDF Menu
-                  </button>
-                  <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group text-left">
-                    <span className="w-8 h-px bg-current opacity-20 group-hover:w-12 group-hover:bg-accent group-hover:opacity-100 transition-all" />
-                    Terms of Service
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold">
-                  Connection
-                </span>
-                <div className="flex flex-col gap-4">
-                  <a
-                    href="#"
-                    className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
-                  >
-                    <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
-                    Instagram
-                  </a>
-                  <a
-                    href="#"
-                    className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
-                  >
-                    <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
-                    Inquiries
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
