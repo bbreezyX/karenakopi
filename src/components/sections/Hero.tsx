@@ -168,7 +168,7 @@ export const Hero = () => {
             className="hidden md:flex items-center gap-4"
           >
             <div className="w-12 h-px bg-accent" />
-            <span className="font-display text-white/20 text-xs lg:text-base xl:text-xl tracking-[0.3em] uppercase">
+            <span className="font-display text-white/20 text-sm tracking-[0.3em] uppercase">
               Est. 2020
             </span>
           </motion.div>
@@ -200,7 +200,7 @@ export const Hero = () => {
             transition={{ delay: 2.1, duration: 1 }}
             className="text-right hidden md:block"
           >
-            <span className="block text-white/30 font-display text-xs lg:text-base xl:text-xl tracking-[0.2em] uppercase">
+            <span className="block text-white/30 font-display text-sm tracking-[0.2em] uppercase">
               Your Favorite Coffee Dealer in Town.
             </span>
           </motion.div>
