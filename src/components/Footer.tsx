@@ -22,14 +22,42 @@ export const Footer = () => {
             </h2>
           </div>
 
-          <div className="text-white/40 text-[11px] md:text-xs space-y-2 uppercase tracking-[0.2em] font-bold">
-            <p className="text-white/60">Jambi Business Center</p>
-            <p>Jl. Kapt A. Bakaruddin, Jambi</p>
-            <div className="pt-6">
-              <p className="text-accent text-sm md:text-base">
-                Open Daily: 08:00 — 23:00
-              </p>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+            {/* Location 1: JBC */}
+            <div className="text-white/40 text-[11px] md:text-xs space-y-1.5 uppercase tracking-[0.2em] font-bold">
+              <p className="text-accent">01 — JBC</p>
+              <p className="text-white/60">Jambi Business Center</p>
+              <p>Jl. Kapt A. Bakaruddin, Jambi</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Jambi+Business+Center"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block pt-2 text-accent hover:text-white transition-colors"
+              >
+                Directions →
+              </a>
             </div>
+
+            {/* Location 2: Telanaipura */}
+            <div className="text-white/40 text-[11px] md:text-xs space-y-1.5 uppercase tracking-[0.2em] font-bold">
+              <p className="text-accent">02 — Telanaipura</p>
+              <p className="text-white/60">Jl. Prof. Dr. Sri Sudewi M.S.</p>
+              <p>No.E5, Sungai Putri, Jambi</p>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Jl.+Prof.+Dr.+Sri+Sudewi+Maschun+Sopyan+No.E5+Jambi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block pt-2 text-accent hover:text-white transition-colors"
+              >
+                Directions →
+              </a>
+            </div>
+          </div>
+
+          <div className="pt-4">
+            <p className="text-accent text-sm md:text-base uppercase tracking-[0.2em] font-bold">
+              Open Daily: 08:00 — 23:00
+            </p>
           </div>
         </div>
 
@@ -61,10 +89,7 @@ export const Footer = () => {
 
           <div className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-bold text-left md:text-right space-y-2">
             <p>All prices exclude 10% tax.</p>
-            <p>
-              &copy; {new Date().getFullYear()} Karena Kopi. Developed for the
-              Rituals.
-            </p>
+            <p>&copy; {new Date().getFullYear()} Karena Kopi. Made by Love</p>
           </div>
         </div>
       </div>

@@ -171,9 +171,17 @@ export const Menu = () => {
       {/* Category Navigation - Floating Bottom Dock */}
       <motion.div
         style={{
-          opacity: scrollYProgress,
-          y: useTransform(scrollYProgress, [0, 1], [40, 0]),
-          scale: useTransform(scrollYProgress, [0, 1], [0.95, 1]),
+          opacity: useTransform(
+            scrollYProgress,
+            [0, 0.05, 0.95, 1],
+            [0, 1, 1, 0],
+          ),
+          y: useTransform(scrollYProgress, [0, 0.05, 0.95, 1], [40, 0, 0, 40]),
+          scale: useTransform(
+            scrollYProgress,
+            [0, 0.05, 0.95, 1],
+            [0.9, 1, 1, 0.9],
+          ),
         }}
         className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[70] w-auto max-w-[90vw]"
       >
@@ -371,43 +379,82 @@ export const Menu = () => {
       {/* Pricing Notice & Footer */}
       <section
         className={cn(
-          "transition-colors duration-1000 py-16 md:py-24 px-6 border-t",
+          "transition-colors duration-1000 py-24 px-6 md:px-12 border-t",
           currentCategory.bg === "black"
-            ? "bg-black border-white/5 text-white/40"
-            : "bg-off-white border-black/5 text-black/40",
+            ? "bg-black border-white/5 text-white"
+            : "bg-off-white border-black/5 text-black",
         )}
       >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-12">
-          <div className="flex flex-col gap-3 md:gap-4 max-w-xl">
-            <h4 className="font-display text-accent text-lg md:text-xl uppercase tracking-widest">
-              Service Notes
-            </h4>
-            <p className="text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed">
-              * All prices are in Indonesian Rupiah (IDR) and exclude 10%
-              government tax. Prices displayed as Small / Large where
-              applicable. Please inform our staff of any allergies before
-              ordering.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-x-8 md:gap-x-12 gap-y-6">
-            <div className="flex flex-col gap-3 md:gap-4">
-              <span className="text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 font-bold">
-                Resources
-              </span>
-              <button className="text-accent hover:text-white transition-colors font-display uppercase tracking-widest text-xs md:text-sm flex items-center gap-2 group">
-                Download PDF Menu
-                <span className="block w-1.5 h-1.5 md:w-2 md:h-2 bg-accent rounded-full scale-0 group-hover:scale-100 transition-transform" />
-              </button>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+            {/* Service Note Card */}
+            <div
+              className={cn(
+                "lg:col-span-7 p-8 md:p-10 rounded-[2rem] border transition-all duration-700",
+                currentCategory.bg === "black"
+                  ? "bg-white/[0.02] border-white/5"
+                  : "bg-black/[0.02] border-black/5",
+              )}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                <h4 className="font-display text-accent text-lg md:text-xl uppercase tracking-widest">
+                  Service Notes
+                </h4>
+              </div>
+              <p
+                className={cn(
+                  "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700",
+                  currentCategory.bg === "black" ? "opacity-40" : "opacity-60",
+                )}
+              >
+                * All prices are in Indonesian Rupiah (IDR) and exclude 10%
+                government tax. Prices displayed as Small / Large where
+                applicable. Our signature blends are roasted in-house to ensure
+                the highest quality and consistency in every cup. Please inform
+                our staff of any allergies before ordering.
+              </p>
             </div>
-            <div className="flex flex-col gap-3 md:gap-4">
-              <span className="text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 font-bold">
-                Engagement
-              </span>
-              <button className="text-white/60 hover:text-white transition-colors font-display uppercase tracking-widest text-xs md:text-sm flex items-center gap-2 group">
-                Terms of Service
-                <span className="block w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full scale-0 group-hover:scale-100 transition-transform" />
-              </button>
+
+            {/* Resources & Engagement */}
+            <div className="lg:col-span-5 flex flex-wrap gap-x-12 gap-y-10 pt-4 lg:pt-8">
+              <div className="flex flex-col gap-4">
+                <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold">
+                  Administrative
+                </span>
+                <div className="flex flex-col gap-4">
+                  <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group text-left">
+                    <span className="w-8 h-px bg-current opacity-20 group-hover:w-12 group-hover:bg-accent group-hover:opacity-100 transition-all" />
+                    Download PDF Menu
+                  </button>
+                  <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group text-left">
+                    <span className="w-8 h-px bg-current opacity-20 group-hover:w-12 group-hover:bg-accent group-hover:opacity-100 transition-all" />
+                    Terms of Service
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-bold">
+                  Connection
+                </span>
+                <div className="flex flex-col gap-4">
+                  <a
+                    href="#"
+                    className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
+                  >
+                    <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
+                    Instagram
+                  </a>
+                  <a
+                    href="#"
+                    className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
+                  >
+                    <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
+                    Inquiries
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
