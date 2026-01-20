@@ -203,16 +203,29 @@ export const Menu = () => {
           </div>
         </div>
 
-        <div className="bg-black/40 backdrop-blur-3xl border border-white/5 rounded-full p-2 flex items-center gap-1 overflow-x-auto no-scrollbar shadow-2xl">
+        <div
+          className={cn(
+            "p-2 flex items-center gap-1 overflow-x-auto no-scrollbar rounded-full transition-all duration-700 shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)] border",
+            currentCategory.bg === "black"
+              ? "bg-black/80 backdrop-blur-2xl border-white/10"
+              : "bg-white/80 backdrop-blur-2xl border-black/10",
+          )}
+        >
           {menuCategories.map((category, idx) => {
             const isActive = activeIdx === idx;
+            const isCategoryOnWhite = currentCategory.bg === "off-white";
+
             return (
               <button
                 key={category.title}
                 onClick={(e) => handleCategoryClick(idx, e)}
                 className={cn(
                   "relative group flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-500 whitespace-nowrap",
-                  isActive ? "text-black" : "text-white/40 hover:text-white",
+                  isActive
+                    ? "text-black"
+                    : isCategoryOnWhite
+                      ? "text-black/40 hover:text-black"
+                      : "text-white/40 hover:text-white",
                 )}
               >
                 {isActive && (
@@ -227,7 +240,9 @@ export const Menu = () => {
                     "relative z-10 text-[10px] font-bold tabular-nums transition-colors duration-500",
                     isActive
                       ? "text-black"
-                      : "text-accent/40 group-hover:text-accent",
+                      : isCategoryOnWhite
+                        ? "text-accent group-hover:text-accent-dark"
+                        : "text-accent/40 group-hover:text-accent",
                   )}
                 >
                   {(idx + 1).toString().padStart(2, "0")}
