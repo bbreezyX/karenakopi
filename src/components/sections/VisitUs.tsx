@@ -8,7 +8,7 @@ export const VisitUs = () => {
   return (
     <section
       id="visit"
-      className="bg-black py-24 md:py-48 px-6 md:px-12 relative overflow-hidden"
+      className="bg-background py-24 md:py-48 px-6 md:px-12 relative overflow-hidden"
     >
       {/* Decorative Background Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
@@ -40,11 +40,11 @@ export const VisitUs = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="flex items-start space-x-6"
               >
-                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-accent" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-2">
+                  <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40 mb-2">
                     Location
                   </h4>
                   <p className="text-xl font-medium max-w-xs leading-snug">
@@ -62,12 +62,12 @@ export const VisitUs = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="flex items-start space-x-6"
               >
-                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5 text-accent" />
                 </div>
                 <div>
                   <div className="flex items-center space-x-3 mb-2">
-                    <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                    <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40">
                       Ritual Hours
                     </h4>
                     <span className="flex items-center space-x-1 px-2 py-0.5 rounded-full bg-accent/20 border border-accent/20">
@@ -79,9 +79,9 @@ export const VisitUs = () => {
                   </div>
                   <div className="grid grid-cols-2 gap-x-8 gap-y-1">
                     <p className="text-sm font-medium">Mon — Fri</p>
-                    <p className="text-sm text-white/60">07:00 — 21:00</p>
+                    <p className="text-sm text-foreground/60">07:00 — 21:00</p>
                     <p className="text-sm font-medium">Sat — Sun</p>
-                    <p className="text-sm text-white/60">08:00 — 22:00</p>
+                    <p className="text-sm text-foreground/60">08:00 — 22:00</p>
                   </div>
                 </div>
               </motion.div>
@@ -94,11 +94,11 @@ export const VisitUs = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex items-start space-x-6"
               >
-                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5 text-accent" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 mb-2">
+                  <h4 className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/40 mb-2">
                     Connect
                   </h4>
                   <p className="text-xl font-medium">+62 812 3456 7890</p>
@@ -124,21 +124,21 @@ export const VisitUs = () => {
             transition={{ duration: 1.2 }}
             className="aspect-[4/5] relative group"
           >
-            <div className="absolute inset-0 border border-white/10 rounded-[4rem] group-hover:border-accent/40 transition-colors duration-700" />
+            <div className="absolute inset-0 border border-foreground/10 rounded-[4rem] group-hover:border-accent/40 transition-colors duration-700" />
             <div className="absolute inset-4 overflow-hidden rounded-[3rem]">
               <img
                 src="/visit-us.jpeg"
-                className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-in-out"
+                className="w-full h-full object-cover grayscale brightness-75 dark:brightness-50 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-in-out"
                 alt="Storefront"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
 
               {/* Overlay Label */}
               <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12">
                 <p className="font-handwriting text-accent text-3xl md:text-5xl lowercase mb-2">
                   Find us here
                 </p>
-                <p className="font-display text-white text-base md:text-xl uppercase tracking-widest">
+                <p className="font-display text-foreground text-base md:text-xl uppercase tracking-widest">
                   Jambi Business Center
                 </p>
               </div>
@@ -148,7 +148,7 @@ export const VisitUs = () => {
             <motion.div
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -right-4 md:-top-8 md:-right-8 w-24 h-24 md:w-32 md:h-32 bg-accent rounded-full flex items-center justify-center p-4 text-black text-center shadow-2xl shadow-accent/20"
+              className="absolute -top-4 -right-4 md:-top-8 md:-right-8 w-24 h-24 md:w-32 md:h-32 bg-accent rounded-full flex items-center justify-center p-4 text-background text-center shadow-2xl shadow-accent/20"
             >
               <span className="font-display text-[8px] md:text-[10px] font-bold uppercase leading-tight">
                 Get <br /> Directions

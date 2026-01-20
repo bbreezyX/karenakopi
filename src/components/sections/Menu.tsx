@@ -207,8 +207,8 @@ export const Menu = () => {
           className={cn(
             "p-2 flex items-center gap-1 overflow-x-auto no-scrollbar rounded-full transition-all duration-700 shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)] border",
             currentCategory.bg === "black"
-              ? "bg-black/80 backdrop-blur-2xl border-white/10"
-              : "bg-white/80 backdrop-blur-2xl border-black/10",
+              ? "bg-background/80 backdrop-blur-2xl border-foreground/10"
+              : "bg-off-white/80 backdrop-blur-2xl border-foreground/10",
           )}
         >
           {menuCategories.map((category, idx) => {
@@ -222,10 +222,8 @@ export const Menu = () => {
                 className={cn(
                   "relative group flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-500 whitespace-nowrap",
                   isActive
-                    ? "text-black"
-                    : isCategoryOnWhite
-                      ? "text-black/40 hover:text-black"
-                      : "text-white/40 hover:text-white",
+                    ? "text-background"
+                    : "text-foreground/40 hover:text-foreground",
                 )}
               >
                 {isActive && (
@@ -239,10 +237,8 @@ export const Menu = () => {
                   className={cn(
                     "relative z-10 text-[10px] font-bold tabular-nums transition-colors duration-500",
                     isActive
-                      ? "text-black"
-                      : isCategoryOnWhite
-                        ? "text-accent group-hover:text-accent-dark"
-                        : "text-accent/40 group-hover:text-accent",
+                      ? "text-background"
+                      : "text-accent/40 group-hover:text-accent",
                   )}
                 >
                   {(idx + 1).toString().padStart(2, "0")}
@@ -268,8 +264,8 @@ export const Menu = () => {
             className={cn(
               "relative min-h-screen py-32 px-6 md:px-12 transition-colors duration-1000 overflow-hidden -mt-[48px] md:-mt-[100px] z-10",
               currentCategory.bg === "black"
-                ? "bg-black text-white rounded-t-[48px] md:rounded-t-[100px]"
-                : "bg-off-white text-black rounded-[48px] md:rounded-[100px]",
+                ? "bg-background text-foreground rounded-t-[48px] md:rounded-t-[100px]"
+                : "bg-off-white text-foreground rounded-[48px] md:rounded-[100px]",
             )}
           >
             {/* Background Narrative Title */}
@@ -352,9 +348,7 @@ export const Menu = () => {
                     }}
                     className={cn(
                       "group relative flex justify-between items-start px-6 py-6 md:py-8 transition-all duration-500 rounded-[2rem] cursor-default",
-                      currentCategory.bg === "black"
-                        ? "hover:bg-white/[0.03]"
-                        : "hover:bg-black/[0.03]",
+                      "hover:bg-foreground/[0.03]",
                     )}
                   >
                     <div className="flex flex-col gap-1.5 md:gap-2 max-w-[70%]">
@@ -396,9 +390,7 @@ export const Menu = () => {
                   <div
                     className={cn(
                       "lg:col-span-7 p-8 md:p-10 rounded-[2rem] transition-all duration-700",
-                      currentCategory.bg === "black"
-                        ? "bg-white/[0.02]"
-                        : "bg-black/[0.02]",
+                      "bg-foreground/[0.02]",
                     )}
                   >
                     <div className="flex items-center gap-3 mb-6">
@@ -409,10 +401,7 @@ export const Menu = () => {
                     </div>
                     <p
                       className={cn(
-                        "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700",
-                        currentCategory.bg === "black"
-                          ? "opacity-40"
-                          : "opacity-60",
+                        "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700 text-foreground opacity-40",
                       )}
                     >
                       * All prices are in Indonesian Rupiah (IDR) and exclude

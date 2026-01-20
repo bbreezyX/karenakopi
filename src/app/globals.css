@@ -8,6 +8,14 @@
   --gold: #c5a059;
 }
 
+.light {
+  --background: #fbfaf8;
+  --foreground: #1c1917;
+  --accent: #8ce102;
+  --off-white: #f8f8f8;
+  --gold: #c5a059;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -25,7 +33,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-background text-foreground font-sans selection:bg-gold selection:text-black;
+    @apply bg-background text-foreground font-sans selection:bg-gold selection:text-black transition-colors duration-700;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

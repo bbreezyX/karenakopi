@@ -17,14 +17,16 @@ const images = [
 
 export const Community = () => {
   return (
-    <section className="bg-black py-24 md:py-48 px-6 md:px-12">
+    <section className="bg-background py-24 md:py-48 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="relative text-center mb-48">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 0.1, scale: 1 }}
+            whileInView={
+              { opacity: 0.05, dark: { opacity: 0.03 }, scale: 1 } as any
+            }
             transition={{ duration: 1.5 }}
-            className="font-display text-8xl md:text-[15vw] leading-none uppercase tracking-tighter absolute inset-0 flex items-center justify-center pointer-events-none whitespace-nowrap gpu-accelerated"
+            className="font-display text-8xl md:text-[15vw] leading-none uppercase tracking-tighter absolute inset-0 flex items-center justify-center pointer-events-none whitespace-nowrap gpu-accelerated text-foreground"
           >
             Our Ritual
           </motion.h2>
@@ -46,7 +48,7 @@ export const Community = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: (index % 4) * 0.1 }}
-              className={`aspect-square bg-gray-900 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer rounded-2xl md:rounded-[2rem] 
+              className={`aspect-square bg-foreground/5 overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer rounded-2xl md:rounded-[2rem] 
                 ${index % 4 === 1 ? "md:mt-12" : ""} 
                 ${index % 4 === 3 ? "md:mt-24" : ""}
                 ${index % 4 === 2 ? "md:mt-8" : ""}
@@ -73,7 +75,7 @@ export const Community = () => {
             href="https://www.instagram.com/karena.kopi/"
             target="_blank"
             rel="noreferrer"
-            className="inline-block border border-white/20 px-12 py-5 rounded-full hover:bg-white hover:text-black transition-all group overflow-hidden relative"
+            className="inline-block border border-foreground/20 px-12 py-5 rounded-full hover:bg-foreground hover:text-background transition-all group overflow-hidden relative"
           >
             <span className="flex items-center space-x-3 font-bold uppercase tracking-[0.2em] text-[10px] relative z-10">
               <Instagram className="w-5 h-5" />

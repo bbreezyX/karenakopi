@@ -45,7 +45,7 @@ export const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen flex flex-col items-center justify-center bg-black overflow-hidden px-6"
+      className="relative h-screen flex flex-col items-center justify-center bg-background overflow-hidden px-6"
     >
       <motion.div
         className="relative z-20 text-center select-none w-full max-w-[2000px] flex flex-col items-center justify-center pt-24 pb-20 md:pt-0 md:pb-0 gpu-accelerated"
@@ -67,7 +67,7 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
+                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-foreground uppercase inline-block gpu-accelerated optimize-text"
                 >
                   {char}
                 </motion.span>
@@ -88,7 +88,7 @@ export const Hero = () => {
             transition={{ delay: 1.5, duration: 1.2, ease: "easeOut" }}
             className="hidden md:block absolute -top-[5vw] left-[15%] z-30 pointer-events-none"
           >
-            <span className="font-handwriting text-accent text-7xl md:text-[10vw] lowercase leading-none drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+            <span className="font-handwriting text-accent text-7xl md:text-[10vw] lowercase leading-none drop-shadow-[0_10px_30px_rgba(0,0,0,0.2)] dark:drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
               Flagship
             </span>
           </motion.div>
@@ -101,7 +101,7 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
+                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-foreground uppercase inline-block gpu-accelerated optimize-text"
                 >
                   {char}
                 </motion.span>
@@ -127,11 +127,11 @@ export const Hero = () => {
                 <span className="font-handwriting text-accent text-4xl lowercase leading-none">
                   Your Favorite
                 </span>
-                <span className="font-display text-white text-lg tracking-[0.2em] uppercase leading-tight">
+                <span className="font-display text-foreground text-lg tracking-[0.2em] uppercase leading-tight">
                   Coffee Dealer in Town
                 </span>
               </div>
-              <span className="font-display text-white/20 text-xs tracking-[0.4em] uppercase mt-2">
+              <span className="font-display text-foreground/20 text-xs tracking-[0.4em] uppercase mt-2">
                 Est. 2020
               </span>
             </div>
@@ -142,14 +142,14 @@ export const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2.2, duration: 1 }}
-              className="flex flex-col items-center gap-3 cursor-pointer group pointer-events-auto border-t border-white/5 pt-6"
+              className="flex flex-col items-center gap-3 cursor-pointer group pointer-events-auto border-t border-foreground/5 pt-6"
             >
-              <span className="font-display text-[9px] text-white/30 tracking-[0.4em] uppercase">
+              <span className="font-display text-[9px] text-foreground/30 tracking-[0.4em] uppercase">
                 Explore
               </span>
               <div className="w-px h-12 bg-gradient-to-b from-accent to-transparent overflow-hidden">
                 <motion.div
-                  className="w-full h-full bg-white origin-top"
+                  className="w-full h-full bg-foreground origin-top"
                   animate={{ y: ["-100%", "100%"] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                 />
@@ -169,7 +169,7 @@ export const Hero = () => {
           className="hidden md:flex items-center gap-4"
         >
           <div className="w-12 h-px bg-accent" />
-          <span className="font-display text-white/20 text-sm tracking-[0.3em] uppercase">
+          <span className="font-display text-foreground/20 text-sm tracking-[0.3em] uppercase">
             Est. 2020
           </span>
         </motion.div>
@@ -182,12 +182,12 @@ export const Hero = () => {
           transition={{ delay: 2.2, duration: 1 }}
           className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0"
         >
-          <span className="font-display text-[9px] md:text-[10px] text-white/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
+          <span className="font-display text-[9px] md:text-[10px] text-foreground/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
             Explore
           </span>
           <div className="w-px h-12 md:h-24 bg-gradient-to-b from-accent to-transparent overflow-hidden">
             <motion.div
-              className="w-full h-full bg-white origin-top"
+              className="w-full h-full bg-foreground origin-top"
               animate={{ y: ["-100%", "100%"] }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             />
@@ -201,14 +201,14 @@ export const Hero = () => {
           transition={{ delay: 2.1, duration: 1 }}
           className="text-right hidden md:block"
         >
-          <span className="block text-white/30 font-display text-sm tracking-[0.2em] uppercase">
+          <span className="block text-foreground/30 font-display text-sm tracking-[0.2em] uppercase">
             Your Favorite Coffee Dealer in Town.
           </span>
         </motion.div>
       </div>
 
       {/* Subtle Bottom Glow */}
-      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background via-background/80 to-transparent z-10 pointer-events-none" />
     </section>
   );
 };
