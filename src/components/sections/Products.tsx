@@ -41,11 +41,11 @@ export const Products = () => {
   return (
     <section
       id="products"
-      className="bg-off-white text-foreground py-24 md:py-48 px-6 md:px-12 rounded-t-[4rem] relative z-20 -mt-10 overflow-hidden"
+      className="bg-off-white text-zinc-950 py-24 md:py-48 px-6 md:px-12 rounded-t-[4rem] relative z-20 -mt-10 overflow-hidden"
     >
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-none opacity-[0.03] select-none overflow-hidden">
-        <span className="font-display text-[30vw] uppercase leading-none text-foreground whitespace-nowrap gpu-accelerated">
+        <span className="font-display text-[30vw] uppercase leading-none text-black whitespace-nowrap gpu-accelerated">
           Inventory
         </span>
       </div>
@@ -58,7 +58,7 @@ export const Products = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-foreground/40 text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
+            <span className="text-black/40 text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
               Luxury Retail
             </span>
             <h2 className="font-display text-7xl md:text-[10vw] leading-[0.9] uppercase tracking-tighter">
@@ -77,7 +77,7 @@ export const Products = () => {
               <span className="font-bold uppercase tracking-[0.3em] text-[10px]">
                 Full Collection
               </span>
-              <div className="w-14 h-14 rounded-full border border-foreground/10 flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-700">
+              <div className="w-14 h-14 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-zinc-950 group-hover:text-white transition-all duration-700">
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </div>
             </button>
@@ -97,7 +97,7 @@ export const Products = () => {
               <div className="aspect-[4/5] bg-white rounded-[3rem] p-10 mb-8 flex items-center justify-center relative overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] transition-all duration-1000">
                 {/* Product Tag */}
                 <div className="absolute top-8 left-8 z-20">
-                  <span className="text-[8px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-foreground/5 bg-background/50 backdrop-blur-md">
+                  <span className="text-[8px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border border-black/5 bg-white/50 backdrop-blur-md">
                     {product.tag}
                   </span>
                 </div>
@@ -111,11 +111,11 @@ export const Products = () => {
                 />
 
                 {/* Hover Action */}
-                <div className="absolute inset-0 bg-foreground/5 opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] z-20 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-all duration-700 backdrop-blur-[2px] z-20 flex items-center justify-center">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-foreground text-background px-10 py-4 rounded-full font-bold uppercase text-[10px] tracking-[0.3em] flex items-center gap-3"
+                    className="bg-zinc-950 text-white px-10 py-4 rounded-full font-bold uppercase text-[10px] tracking-[0.3em] flex items-center gap-3"
                   >
                     <ShoppingBag className="w-4 h-4" />
                     <span>Quick Add</span>
@@ -125,10 +125,10 @@ export const Products = () => {
 
               <div className="flex justify-between items-start px-4">
                 <div className="max-w-[70%]">
-                  <h3 className="text-2xl font-display tracking-tight mb-2 uppercase group-hover:text-accent group-hover:bg-foreground group-hover:px-2 transition-all inline-block">
+                  <h3 className="text-2xl font-display tracking-tight mb-2 uppercase group-hover:text-accent group-hover:bg-zinc-950 group-hover:px-2 transition-all inline-block">
                     {product.name}
                   </h3>
-                  <p className="font-serif-italic text-sm text-foreground/40 leading-relaxed italic">
+                  <p className="font-serif-italic text-sm text-black/40 leading-relaxed italic">
                     {product.desc}
                   </p>
                 </div>

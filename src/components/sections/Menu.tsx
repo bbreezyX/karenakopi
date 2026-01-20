@@ -223,7 +223,9 @@ export const Menu = () => {
                   "relative group flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-500 whitespace-nowrap",
                   isActive
                     ? "text-background"
-                    : "text-foreground/40 hover:text-foreground",
+                    : isCategoryOnWhite
+                      ? "text-black/40 hover:text-black"
+                      : "text-foreground/40 hover:text-foreground",
                 )}
               >
                 {isActive && (
@@ -238,7 +240,9 @@ export const Menu = () => {
                     "relative z-10 text-[10px] font-bold tabular-nums transition-colors duration-500",
                     isActive
                       ? "text-background"
-                      : "text-accent/40 group-hover:text-accent",
+                      : isCategoryOnWhite
+                        ? "text-accent group-hover:text-accent"
+                        : "text-accent/40 group-hover:text-accent",
                   )}
                 >
                   {(idx + 1).toString().padStart(2, "0")}
@@ -265,7 +269,7 @@ export const Menu = () => {
               "relative min-h-screen py-32 px-6 md:px-12 transition-colors duration-1000 overflow-hidden -mt-[48px] md:-mt-[100px] z-10",
               currentCategory.bg === "black"
                 ? "bg-background text-foreground rounded-t-[48px] md:rounded-t-[100px]"
-                : "bg-off-white text-foreground rounded-[48px] md:rounded-[100px]",
+                : "bg-off-white text-zinc-950 rounded-[48px] md:rounded-[100px]",
             )}
           >
             {/* Background Narrative Title */}
@@ -275,7 +279,12 @@ export const Menu = () => {
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
             >
-              <h1 className="font-display text-[25vw] md:text-[30vw] uppercase leading-none text-current whitespace-nowrap select-none rotate-90 md:rotate-0 gpu-accelerated">
+              <h1
+                className={cn(
+                  "font-display text-[25vw] md:text-[30vw] uppercase leading-none text-current whitespace-nowrap select-none rotate-90 md:rotate-0 gpu-accelerated",
+                  currentCategory.bg !== "black" && "text-black",
+                )}
+              >
                 {currentCategory.title}
               </h1>
             </motion.div>
@@ -316,7 +325,12 @@ export const Menu = () => {
                   <span className="text-accent text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold">
                     The Selection
                   </span>
-                  <span className="font-display text-xs md:text-lg uppercase tracking-widest opacity-40">
+                  <span
+                    className={cn(
+                      "font-display text-xs md:text-lg uppercase tracking-widest opacity-40",
+                      currentCategory.bg !== "black" && "text-black",
+                    )}
+                  >
                     Menu Item
                   </span>
                 </div>
@@ -326,7 +340,12 @@ export const Menu = () => {
                       ? "Size Price"
                       : "Retail Price"}
                   </span>
-                  <span className="font-display text-xs md:text-lg uppercase tracking-widest opacity-40">
+                  <span
+                    className={cn(
+                      "font-display text-xs md:text-lg uppercase tracking-widest opacity-40",
+                      currentCategory.bg !== "black" && "text-black",
+                    )}
+                  >
                     {currentCategory.items.some((i) => i.price.includes("/"))
                       ? "Small / Large"
                       : "Default"}
@@ -361,7 +380,12 @@ export const Menu = () => {
                         </h3>
                       </div>
                       {item.desc && (
-                        <p className="pl-6 md:pl-7 text-[9px] md:text-xs uppercase tracking-widest opacity-40 font-bold leading-relaxed">
+                        <p
+                          className={cn(
+                            "pl-6 md:pl-7 text-[9px] md:text-xs uppercase tracking-widest opacity-40 font-bold leading-relaxed",
+                            currentCategory.bg !== "black" && "text-black",
+                          )}
+                        >
                           {item.desc}
                         </p>
                       )}
@@ -401,7 +425,10 @@ export const Menu = () => {
                     </div>
                     <p
                       className={cn(
-                        "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700 text-foreground opacity-40",
+                        "text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] leading-relaxed transition-opacity duration-700 opacity-40",
+                        currentCategory.bg === "black"
+                          ? "text-foreground"
+                          : "text-black",
                       )}
                     >
                       * All prices are in Indonesian Rupiah (IDR) and exclude
