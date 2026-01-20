@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ☕ Karena Kopi
 
-## Getting Started
+> **Modern Specialty Coffee** — A flagship coffee brand website built with Next.js 16 and stunning motion design.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16.1.4-black?style=flat-square&logo=next.js)
+![React](https://img.shields.io/badge/React-19.2.3-61DAFB?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-12-FF0055?style=flat-square&logo=framer)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- **🎬 Cinematic Hero Section** — Full-screen typography with parallax scrolling and letter-by-letter reveal animations
+- **🍵 Interactive Menu** — Beautifully designed coffee menu with horizontal category navigation and hover effects
+- **📱 Fully Responsive** — Optimized layouts for desktop and mobile with adaptive typography
+- **⚡ Smooth Animations** — Powered by Framer Motion for buttery-smooth transitions and micro-interactions
+- **🎨 Dark Theme** — Sophisticated dark aesthetic with gold accent colors
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology         | Purpose                         |
+| :----------------- | :------------------------------ |
+| **Next.js 16**     | React framework with App Router |
+| **React 19**       | UI component library            |
+| **TypeScript**     | Type-safe development           |
+| **Tailwind CSS 4** | Utility-first styling           |
+| **Framer Motion**  | Animation library               |
+| **Lucide React**   | Icon system                     |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/bbreezyX/karenakopi.git
+   cd karenakopi
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 📁 Project Structure
+
+```
+karenakopi/
+├── src/
+│   ├── app/
+│   │   ├── globals.css      # Global styles & Tailwind config
+│   │   ├── layout.tsx       # Root layout with fonts
+│   │   └── page.tsx         # Homepage
+│   ├── components/
+│   │   ├── sections/
+│   │   │   ├── Hero.tsx     # Cinematic hero section
+│   │   │   └── Menu.tsx     # Coffee menu section
+│   │   ├── Navbar.tsx       # Navigation bar
+│   │   └── Footer.tsx       # Site footer
+│   └── lib/
+│       └── utils.ts         # Utility functions (cn helper)
+├── public/                   # Static assets
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | Description              |
+| :-------------- | :----------------------- |
+| `npm run dev`   | Start development server |
+| `npm run build` | Create production build  |
+| `npm run start` | Start production server  |
+| `npm run lint`  | Run ESLint               |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Design System
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Colors
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Background**: `#000000` (Black)
+- **Text**: `#FFFFFF` (White)
+- **Accent**: Gold (`--color-accent`)
 
-## Deploy on Vercel
+### Typography
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Display Font**: Used for large headings
+- **Handwriting Font**: Used for "Flagship" branding
+- **Body Font**: Clean sans-serif for readability
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📄 License
+
+This project is private and proprietary.
+
+---
+
+## 👤 Author
+
+**bbreezyX**
+
+- GitHub: [@bbreezyX](https://github.com/bbreezyX)
+
+---
+
+<p align="center">
+  <strong>Est. 2024</strong><br>
+  <em>Karena Kopi — Modern Specialty Coffee</em>
+</p>
