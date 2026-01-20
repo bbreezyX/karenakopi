@@ -3,10 +3,20 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ChevronDown, MapPin } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 export const Navbar = () => {
   const [isLocationOpen, setIsLocationOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Fade out actions after hero section (roughly 600px - 800px)
+  const actionsOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const pointerEvents = useTransform(scrollY, [0, 600], ["auto", "none"]);
 
   return (
     <nav className="fixed top-0 left-0 w-full z-[100] pointer-events-none">
@@ -22,10 +32,16 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* Action Section - Desktop: Dual Locations, Mobile: Menu + Dropdown */}
+        {/* Action Section - Desktop: Dual Locations (Animated), Mobile: Persistent */}
         <div className="flex flex-col items-end gap-4 md:gap-6 pointer-events-auto">
-          {/* DESKTOP VIEW (unchanged) */}
-          <div className="hidden md:flex flex-col items-end gap-6">
+          {/* DESKTOP VIEW - Fades out after hero */}
+          <motion.div
+            style={{
+              opacity: actionsOpacity,
+              pointerEvents: pointerEvents as any,
+            }}
+            className="hidden md:flex flex-col items-end gap-6"
+          >
             <div className="flex flex-col items-end gap-2">
               <div className="flex flex-col items-end text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold leading-relaxed text-right">
                 <span className="text-accent">01 — JBC</span>
@@ -57,9 +73,9 @@ export const Navbar = () => {
                 Directions →
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* MOBILE VIEW - TWO BUTTONS */}
+          {/* MOBILE VIEW - TWO BUTTONS (Persistent) */}
           <div className="md:hidden flex items-center gap-2 relative">
             {/* Button 1: Direct to Menu */}
             <button
