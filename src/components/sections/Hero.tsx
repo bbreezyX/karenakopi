@@ -157,55 +157,55 @@ export const Hero = () => {
             </motion.a>
           </motion.div>
         </motion.div>
-
-        {/* Bottom Baseline Controls - Responsive Layout */}
-        <div className="flex absolute bottom-[8%] md:bottom-[5%] left-0 w-full flex-col md:flex-row justify-between items-center md:items-end px-6 md:px-12 z-40 pointer-events-none gap-8 md:gap-0">
-          {/* Left: Est (Desktop Only to avoid mobile redundancy) */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="hidden md:flex items-center gap-4"
-          >
-            <div className="w-12 h-px bg-accent" />
-            <span className="font-display text-white/20 text-sm tracking-[0.3em] uppercase">
-              Est. 2020
-            </span>
-          </motion.div>
-
-          {/* Center Scroll Hint */}
-          <motion.a
-            href="#menu"
-            initial={{ opacity: 0, scaleY: 0 }}
-            animate={{ opacity: 1, scaleY: 1 }}
-            transition={{ delay: 2.2, duration: 1 }}
-            className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0"
-          >
-            <span className="font-display text-[9px] md:text-[10px] text-white/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
-              Explore
-            </span>
-            <div className="w-px h-12 md:h-24 bg-gradient-to-b from-accent to-transparent overflow-hidden">
-              <motion.div
-                className="w-full h-full bg-white origin-top"
-                animate={{ y: ["-100%", "100%"] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
-          </motion.a>
-
-          {/* Right: Modern Specialty Coffee */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 2.1, duration: 1 }}
-            className="text-right hidden md:block"
-          >
-            <span className="block text-white/30 font-display text-sm tracking-[0.2em] uppercase">
-              Your Favorite Coffee Dealer in Town.
-            </span>
-          </motion.div>
-        </div>
       </motion.div>
+
+      {/* Bottom Baseline Controls - Responsive Layout */}
+      <div className="flex absolute bottom-[6%] md:bottom-[4%] left-0 w-full flex-col md:flex-row justify-between items-center md:items-end px-6 md:px-20 z-40 pointer-events-none gap-8 md:gap-0">
+        {/* Left: Est (Desktop Only to avoid mobile redundancy) */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="hidden md:flex items-center gap-4"
+        >
+          <div className="w-12 h-px bg-accent" />
+          <span className="font-display text-white/20 text-sm tracking-[0.3em] uppercase">
+            Est. 2020
+          </span>
+        </motion.div>
+
+        {/* Center Scroll Hint */}
+        <motion.a
+          href="#menu"
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={{ opacity: 1, scaleY: 1 }}
+          transition={{ delay: 2.2, duration: 1 }}
+          className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0"
+        >
+          <span className="font-display text-[9px] md:text-[10px] text-white/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
+            Explore
+          </span>
+          <div className="w-px h-12 md:h-24 bg-gradient-to-b from-accent to-transparent overflow-hidden">
+            <motion.div
+              className="w-full h-full bg-white origin-top"
+              animate={{ y: ["-100%", "100%"] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
+        </motion.a>
+
+        {/* Right: Modern Specialty Coffee */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 2.1, duration: 1 }}
+          className="text-right hidden md:block"
+        >
+          <span className="block text-white/30 font-display text-sm tracking-[0.2em] uppercase">
+            Your Favorite Coffee Dealer in Town.
+          </span>
+        </motion.div>
+      </div>
 
       {/* Subtle Bottom Glow */}
       <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none" />
