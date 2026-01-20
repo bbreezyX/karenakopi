@@ -30,13 +30,14 @@ export const Hero = () => {
   };
 
   const letterVariants = {
-    hidden: { opacity: 0, y: 100, rotateX: 90 },
+    hidden: { opacity: 0, y: 100, rotateX: 90, skewX: -20 },
     visible: {
       opacity: 1,
       y: 0,
       rotateX: 0,
+      skewX: 0,
       transition: {
-        duration: 1.2,
+        duration: 1.5,
         ease: [0.16, 1, 0.3, 1] as any,
       },
     },
@@ -47,8 +48,32 @@ export const Hero = () => {
       ref={containerRef}
       className="relative h-screen flex flex-col items-center justify-center bg-background overflow-hidden px-6"
     >
+      {/* Texture & Grain Overlay */}
+      <div className="noise-overlay" />
+
+      {/* SVG filter for "Liquid" distortion */}
+      <svg className="hidden">
+        <defs>
+          <filter id="liquid-filter">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.01"
+              numOctaves="3"
+            >
+              <animate
+                attributeName="baseFrequency"
+                values="0.01;0.015;0.01"
+                dur="10s"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="10" />
+          </filter>
+        </defs>
+      </svg>
+
       <motion.div
-        className="relative z-20 text-center select-none w-full max-w-[2000px] flex flex-col items-center justify-center pt-24 pb-20 md:pt-0 md:pb-0 gpu-accelerated"
+        className="relative z-20 text-center select-none w-full max-w-[2000px] flex flex-col items-center justify-center pt-40 pb-20 md:pt-0 md:pb-0 gpu-accelerated"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -57,9 +82,9 @@ export const Hero = () => {
         {/* Line 1: Karena */}
         <motion.div
           style={{ y: line1Y }}
-          className="relative flex justify-center perspective-1000"
+          className="relative flex justify-center perspective-1000 px-20"
         >
-          <div className="flex overflow-hidden pb-2 md:pb-4">
+          <div className="flex pb-2 md:pb-4">
             {words.top.split("").map((char, i) =>
               char === " " ? (
                 <span key={i}>&nbsp;</span>
@@ -67,7 +92,8 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-foreground uppercase inline-block gpu-accelerated optimize-text"
+                  whileHover={{ scale: 1.05, skewX: 10, skewY: 5 }}
+                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-foreground uppercase inline-block gpu-accelerated optimize-text cursor-default"
                 >
                   {char}
                 </motion.span>
@@ -79,7 +105,7 @@ export const Hero = () => {
         {/* Line 2: Kopi + Overlapping Flagship (Desktop only overlap) */}
         <motion.div
           style={{ y: line2Y }}
-          className="relative flex flex-col items-center mt-0 md:-mt-[5vw] perspective-1000"
+          className="relative flex flex-col items-center mt-0 md:-mt-[5vw] perspective-1000 px-20"
         >
           {/* Overlapping Flagship Script - DESKTOP ONLY */}
           <motion.div
@@ -93,7 +119,7 @@ export const Hero = () => {
             </span>
           </motion.div>
 
-          <div className="flex overflow-hidden">
+          <div className="flex">
             {words.bottom.split("").map((char, i) =>
               char === " " ? (
                 <span key={i}>&nbsp;</span>
@@ -101,7 +127,8 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-foreground uppercase inline-block gpu-accelerated optimize-text"
+                  whileHover={{ scale: 1.05, skewX: -10, skewY: -5 }}
+                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-foreground uppercase inline-block gpu-accelerated optimize-text cursor-default"
                 >
                   {char}
                 </motion.span>

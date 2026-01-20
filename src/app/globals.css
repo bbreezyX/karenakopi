@@ -61,4 +61,54 @@
     text-rendering: optimizeLegibility;
     will-change: transform, opacity;
   }
+
+  .noise-overlay {
+    pointer-events: none;
+    position: fixed;
+    inset: -200%;
+    height: 400%;
+    width: 400%;
+    z-index: 9999;
+    background-image: url("https://res.cloudinary.com/dq7l82uug/image/upload/v1671895067/6f4770_2100_735c05f889ad4f828795c6437f815802_mv2_sqp_p_shn8p5.png");
+    opacity: 0.04;
+    animation: noise 8s steps(10) infinite;
+  }
+
+  @keyframes noise {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-5%, -10%);
+    }
+    20% {
+      transform: translate(-15%, 5%);
+    }
+    30% {
+      transform: translate(7%, -25%);
+    }
+    40% {
+      transform: translate(-5%, 25%);
+    }
+    50% {
+      transform: translate(-15%, 10%);
+    }
+    60% {
+      transform: translate(15%, 0%);
+    }
+    70% {
+      transform: translate(0%, 15%);
+    }
+    80% {
+      transform: translate(3%, 35%);
+    }
+    90% {
+      transform: translate(-10%, 10%);
+    }
+  }
+
+  .liquid-text {
+    filter: url("#liquid-filter");
+  }
 }

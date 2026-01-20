@@ -9,6 +9,8 @@ export const BrandStory = () => {
       id="story"
       className="relative bg-background overflow-hidden py-24 md:py-0"
     >
+      {/* Texture & Grain Overlay */}
+      <div className="noise-overlay" />
       {/* Background Text Decor */}
       <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.02] select-none">
         <span className="font-display text-[40vw] uppercase leading-none gpu-accelerated text-foreground">
@@ -133,13 +135,15 @@ export const BrandStory = () => {
                 <p className="text-[10px] md:text-xs text-foreground/50 mb-5 md:mb-8 leading-relaxed max-w-[200px] md:max-w-none">
                   Small-batch roasting & minimal design in Jambi.
                 </p>
-                <a
+                <motion.a
                   href="#visit"
+                  whileHover={{ x: 10 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="group flex items-center space-x-3 text-[8px] md:text-[10px] uppercase font-bold tracking-[0.2em]"
                 >
                   <span>Explore</span>
                   <div className="w-8 h-[1px] bg-accent group-hover:w-12 transition-all duration-500" />
-                </a>
+                </motion.a>
               </div>
             </motion.div>
           </div>

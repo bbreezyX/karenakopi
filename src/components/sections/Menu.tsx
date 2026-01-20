@@ -272,6 +272,8 @@ export const Menu = () => {
                 : "bg-off-white text-zinc-950 rounded-[48px] md:rounded-[100px]",
             )}
           >
+            {/* Texture & Grain Overlay */}
+            <div className="noise-overlay" />
             {/* Background Narrative Title */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}

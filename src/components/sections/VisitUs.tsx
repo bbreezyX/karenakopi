@@ -10,6 +10,8 @@ export const VisitUs = () => {
       id="visit"
       className="bg-background py-24 md:py-48 px-6 md:px-12 relative overflow-hidden"
     >
+      {/* Texture & Grain Overlay */}
+      <div className="noise-overlay" />
       {/* Decorative Background Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 

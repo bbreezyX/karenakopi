@@ -17,7 +17,9 @@ const images = [
 
 export const Community = () => {
   return (
-    <section className="bg-background py-24 md:py-48 px-6 md:px-12">
+    <section className="relative bg-background py-24 md:py-48 px-6 md:px-12">
+      {/* Texture & Grain Overlay */}
+      <div className="noise-overlay" />
       <div className="max-w-7xl mx-auto">
         <div className="relative text-center mb-48">
           <motion.h2
@@ -71,17 +73,20 @@ export const Community = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-32 text-center"
         >
-          <a
+          <motion.a
             href="https://www.instagram.com/karena.kopi/"
             target="_blank"
             rel="noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="inline-block border border-foreground/20 px-12 py-5 rounded-full hover:bg-foreground hover:text-background transition-all group overflow-hidden relative"
           >
             <span className="flex items-center space-x-3 font-bold uppercase tracking-[0.2em] text-[10px] relative z-10">
               <Instagram className="w-5 h-5" />
               <span>Join the community</span>
             </span>
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>
