@@ -67,7 +67,7 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
+                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
                 >
                   {char}
                 </motion.span>
@@ -101,7 +101,7 @@ export const Hero = () => {
                 <motion.span
                   key={i}
                   variants={letterVariants}
-                  className="font-display text-[26vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
+                  className="font-display text-[26vw] md:text-[22vw] leading-[0.75] tracking-tighter text-white uppercase inline-block gpu-accelerated optimize-text"
                 >
                   {char}
                 </motion.span>
@@ -159,7 +159,7 @@ export const Hero = () => {
         </motion.div>
 
         {/* Bottom Baseline Controls - Responsive Layout */}
-        <div className="flex absolute bottom-[8%] md:bottom-[10%] left-0 w-full flex-col md:flex-row justify-between items-center md:items-end px-6 md:px-12 z-40 pointer-events-none gap-8 md:gap-0">
+        <div className="flex absolute bottom-[8%] md:bottom-[5%] left-0 w-full flex-col md:flex-row justify-between items-center md:items-end px-6 md:px-12 z-40 pointer-events-none gap-8 md:gap-0">
           {/* Left: Est (Desktop Only to avoid mobile redundancy) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -168,7 +168,7 @@ export const Hero = () => {
             className="hidden md:flex items-center gap-4"
           >
             <div className="w-12 h-px bg-accent" />
-            <span className="font-display text-white/20 text-xl tracking-[0.3em] uppercase">
+            <span className="font-display text-white/20 text-xs lg:text-base xl:text-xl tracking-[0.3em] uppercase">
               Est. 2020
             </span>
           </motion.div>
@@ -200,7 +200,7 @@ export const Hero = () => {
             transition={{ delay: 2.1, duration: 1 }}
             className="text-right hidden md:block"
           >
-            <span className="block text-white/30 font-display text-xl tracking-[0.2em] uppercase">
+            <span className="block text-white/30 font-display text-xs lg:text-base xl:text-xl tracking-[0.2em] uppercase">
               Your Favorite Coffee Dealer in Town.
             </span>
           </motion.div>
