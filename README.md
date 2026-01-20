@@ -132,6 +132,6 @@ This project is private and proprietary.
 ---
 
 <p align="center">
-  <strong>Est. 2024</strong><br>
+  <strong>Est. 2020</strong><br>
   <em>Karena Kopi — Modern Specialty Coffee</em>
 </p>

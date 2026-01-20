@@ -21,6 +21,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground font-sans selection:bg-gold selection:text-black;
   }

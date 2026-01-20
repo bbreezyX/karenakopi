@@ -117,20 +117,31 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 1 }}
-            className="md:hidden flex flex-col items-center gap-6 mt-8"
+            className="md:hidden flex flex-col items-center gap-6 mt-8 px-4"
           >
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-1 mb-2">
               <span className="font-handwriting text-accent text-5xl lowercase leading-none">
                 Flagship
               </span>
-              <span className="font-display text-white/20 text-lg tracking-[0.4em] uppercase">
-                2024
+            </div>
+
+            <div className="flex flex-col items-center text-center gap-2">
+              <div className="flex flex-col items-center gap-2">
+                <span className="font-handwriting text-accent text-4xl lowercase leading-none">
+                  Your Favorite
+                </span>
+                <span className="font-display text-white text-lg tracking-[0.2em] uppercase leading-tight">
+                  Coffee Dealer in Town
+                </span>
+              </div>
+              <span className="font-display text-white/20 text-xs tracking-[0.4em] uppercase mt-2">
+                Est. 2020
               </span>
             </div>
 
             {/* Mobile-specific Scroll Hint */}
             <motion.a
-              href="#menu-start"
+              href="#menu"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2.2, duration: 1 }}
@@ -161,14 +172,14 @@ export const Hero = () => {
           >
             <div className="w-12 h-px bg-accent" />
             <span className="font-display text-white/20 text-xl tracking-[0.3em] uppercase">
-              Est. 2024
+              Est. 2020
             </span>
           </motion.div>
 
           {/* Center Scroll Hint */}
           {/* Center Scroll Hint (Desktop Only) */}
           <motion.a
-            href="#menu-start"
+            href="#menu"
             initial={{ opacity: 0, scaleY: 0 }}
             animate={{ opacity: 1, scaleY: 1 }}
             transition={{ delay: 2.2, duration: 1 }}
@@ -193,8 +204,8 @@ export const Hero = () => {
             transition={{ delay: 2.1, duration: 1 }}
             className="text-right hidden md:block"
           >
-            <span className="block text-white/30 font-display text-xl tracking-[0.4em] uppercase">
-              Modern Specialty Coffee
+            <span className="block text-white/30 font-display text-xl tracking-[0.2em] uppercase">
+              Your Favorite Coffee Dealer in Town.
             </span>
           </motion.div>
         </div>

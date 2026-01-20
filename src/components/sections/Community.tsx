@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import { Instagram } from "lucide-react";
 
 const images = [
-  "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1521017432531-fbd92d744264?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1580915411954-282cb1b0d780?auto=format&fit=crop&q=80&w=400",
-  "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?auto=format&fit=crop&q=80&w=400",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzePZCVtlsX2bX9kEGGKD89PvVRe4fU4GCgNGVv-wxkgnjoM8E2uNB7tPFTLMlgYgyzvKK-lqX9byV6WnFtBqx4YwgRTv4RAEMuFxwJWx1SBfMv3fE53Tcqg0fC55cFDTgMMYI9=s2000",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyIKFRq5BTLNsOruitg_zUPXNbJtvpZeWu1lvhiK8yDauakVhTnUGo4QbZ41PV6UraWNmmln8e1YSVLLSQy1_ENMlvUcb84LPC6Xva4HMYTxW3uuLv4R5mjLXaK_e9A7KILBKcgRz9jeYrG=s2000",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwPOK7SDqRGZ8pRHPPRhPxXJzAd00WV3c6RnO1N4AamZ719fvQ4itlZ720nx3_ru8AGzaJ3QbQjpL6V9WS9Jx0VHmBxzC3aXnJG6wDNnh5dmXXV4r8ponYmiL_K-ID24MuWaK3QPDj-fZM=s2000",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSz8c0E6h039voCBOJlAjGoVGS4xpcQbNF7klBb31TCc0GQuB4zflD0ci1yNRXNo4pq7c4E-ToFDAnRV-vHrT2_6MgStZtAw2zrOzapCucAEsOoAqxMFTLgmPciVgMtCa2DidlfaXsyRCDc=s2000",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwEYnDIIvIVH7OaYla0nIDxOCeM0TvgMbxU7mQiU83BXznvIe42Lgu73ESUfHkMpb8nJdkaN1yh8X0e1RiDzaJGxDDO0Xsf3RQTnD1XDSMcYRxjtPTl1aRp6E5sVRG3nXfL0-TqBA=s2000",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzdUz4JhiTyQAgfLc3fbv8o6SMX8tMviQ_9K4oS0Y9JM3aDFdcX_n8XYFhAPrbQRfnCTu_oGG-K-R4vXp3ARE47CSJznhJ-pPRljr8MpUrF3xGYt4s15JomBkbPJDqppkXdnqyryw=s2000",
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwN_X_mAnF8U5_mY_U0n6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6=s2000", // Fallback pattern
+  "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSw-X_mAnF8U5_mY_U0n6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6-6=s2000", // Fallback pattern
 ];
 
 export const Community = () => {
@@ -70,7 +70,9 @@ export const Community = () => {
           className="mt-32 text-center"
         >
           <a
-            href="#"
+            href="https://www.instagram.com/karena.kopi/"
+            target="_blank"
+            rel="noreferrer"
             className="inline-block border border-white/20 px-12 py-5 rounded-full hover:bg-white hover:text-black transition-all group overflow-hidden relative"
           >
             <span className="flex items-center space-x-3 font-bold uppercase tracking-[0.2em] text-[10px] relative z-10">

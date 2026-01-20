@@ -163,11 +163,7 @@ export const Menu = () => {
   };
 
   return (
-    <div
-      id="menu-start"
-      ref={containerRef}
-      className="relative w-full flex flex-col"
-    >
+    <div id="menu" ref={containerRef} className="relative w-full flex flex-col">
       {/* Category Navigation - Floating Bottom Dock */}
       <motion.div
         style={{
