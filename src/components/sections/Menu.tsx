@@ -315,7 +315,7 @@ export const Menu = () => {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="font-handwriting text-2xl md:text-5xl text-accent -rotate-3 md:-translate-y-8"
+                  className="font-handwriting text-2xl md:text-5xl text-accent -rotate-3 md:-translate-y-8 whitespace-nowrap shrink-0"
                 >
                   Selected with Care
                 </motion.p>
