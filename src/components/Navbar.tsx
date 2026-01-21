@@ -88,7 +88,7 @@ export const Navbar = () => {
           <motion.div
             style={{
               opacity: actionsOpacity,
-              pointerEvents: pointerEvents as any,
+              pointerEvents: pointerEvents as unknown as "auto" | "none",
             }}
             className="hidden md:flex flex-col items-end gap-6"
           >

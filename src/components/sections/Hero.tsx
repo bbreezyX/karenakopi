@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 
 export const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -38,7 +37,7 @@ export const Hero = () => {
       skewX: 0,
       transition: {
         duration: 1.5,
-        ease: [0.16, 1, 0.3, 1] as any,
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };

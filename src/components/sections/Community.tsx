@@ -24,11 +24,9 @@ export const Community = () => {
         <div className="relative text-center mb-48">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={
-              { opacity: 0.05, dark: { opacity: 0.03 }, scale: 1 } as any
-            }
+            whileInView={{ opacity: 0.05, scale: 1 }}
             transition={{ duration: 1.5 }}
-            className="font-display text-8xl md:text-[15vw] leading-none uppercase tracking-tighter absolute inset-0 flex items-center justify-center pointer-events-none whitespace-nowrap gpu-accelerated text-foreground"
+            className="font-display text-8xl md:text-[15vw] leading-none uppercase tracking-tighter absolute inset-0 flex items-center justify-center pointer-events-none whitespace-nowrap gpu-accelerated text-foreground dark:opacity-[0.03]"
           >
             Our Ritual
           </motion.h2>
