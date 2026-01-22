@@ -141,6 +141,18 @@ const menuCategories: MenuCategory[] = [
   },
 ];
 
+/**
+ * Format price for screen readers
+ * "22 / 27" becomes "22 thousand for small, 27 thousand for large"
+ */
+const formatPriceForSR = (price: string): string => {
+  if (price.includes("/")) {
+    const [small, large] = price.split("/").map((p) => p.trim());
+    return `${small} thousand Rupiah for small size, ${large} thousand Rupiah for large size`;
+  }
+  return `${price} thousand Rupiah`;
+};
+
 export const Menu = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -149,6 +161,23 @@ export const Menu = () => {
   });
   const [activeIdx, setActiveIdx] = useState(0);
   const currentCategory = menuCategories[activeIdx];
+
+  // ✅ EXTRACTED: useTransform hooks extracted from inline style prop
+  const navOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.9, 0.95],
+    [0, 1, 1, 0],
+  );
+  const navY = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.85, 0.95],
+    [40, 0, 0, 150],
+  );
+  const navScale = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.9, 0.95],
+    [0.95, 1, 1, 0.95],
+  );
 
   const handleCategoryClick = (idx: number, e: React.MouseEvent) => {
     setActiveIdx(idx);
@@ -165,28 +194,21 @@ export const Menu = () => {
   return (
     <div id="menu" ref={containerRef} className="relative w-full flex flex-col">
       {/* Category Navigation - Floating Bottom Dock */}
-      <motion.div
+      <motion.nav
+        role="navigation"
+        aria-label="Menu categories"
         style={{
-          opacity: useTransform(
-            scrollYProgress,
-            [0, 0.1, 0.9, 0.95],
-            [0, 1, 1, 0],
-          ),
-          y: useTransform(
-            scrollYProgress,
-            [0, 0.1, 0.85, 0.95],
-            [40, 0, 0, 150],
-          ),
-          scale: useTransform(
-            scrollYProgress,
-            [0, 0.1, 0.9, 0.95],
-            [0.95, 1, 1, 0.95],
-          ),
+          opacity: navOpacity,
+          y: navY,
+          scale: navScale,
         }}
         className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[70] w-auto max-w-[90vw]"
       >
         {/* Mobile Scroll Indicator - Hint for Swipe */}
-        <div className="flex flex-col items-center gap-1 mb-2 md:hidden">
+        <div
+          className="flex flex-col items-center gap-1 mb-2 md:hidden"
+          aria-hidden="true"
+        >
           <span className="text-accent text-[8px] uppercase tracking-[0.4em] font-bold opacity-60">
             Slide
           </span>
@@ -204,6 +226,8 @@ export const Menu = () => {
         </div>
 
         <div
+          role="tablist"
+          aria-label="Select a menu category"
           className={cn(
             "p-2 flex items-center gap-1 overflow-x-auto no-scrollbar rounded-full transition-all duration-700 shadow-[0_20px_80px_-15px_rgba(0,0,0,0.3)] border",
             currentCategory.bg === "black"
@@ -218,9 +242,13 @@ export const Menu = () => {
             return (
               <button
                 key={category.title}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`menu-panel-${idx}`}
+                id={`menu-tab-${idx}`}
                 onClick={(e) => handleCategoryClick(idx, e)}
                 className={cn(
-                  "relative group flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-500 whitespace-nowrap",
+                  "relative group flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-500 whitespace-nowrap focus-visible-ring",
                   isActive
                     ? "text-background"
                     : isCategoryOnWhite
@@ -244,6 +272,7 @@ export const Menu = () => {
                         ? "text-accent group-hover:text-accent"
                         : "text-accent/40 group-hover:text-accent",
                   )}
+                  aria-hidden="true"
                 >
                   {(idx + 1).toString().padStart(2, "0")}
                 </span>
@@ -254,13 +283,17 @@ export const Menu = () => {
             );
           })}
         </div>
-      </motion.div>
+      </motion.nav>
 
       {/* Main Content Area with Seamless Transitions */}
       <div className="flex-grow relative overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.section
             key={activeIdx}
+            role="tabpanel"
+            id={`menu-panel-${activeIdx}`}
+            aria-labelledby={`menu-tab-${activeIdx}`}
+            tabIndex={0}
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0 }}
@@ -273,22 +306,24 @@ export const Menu = () => {
             )}
           >
             {/* Texture & Grain Overlay */}
-            <div className="noise-overlay" />
-            {/* Background Narrative Title */}
+            <div className="noise-overlay" aria-hidden="true" />
+
+            {/* Background Narrative Title - Decorative */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 0.03 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
+              aria-hidden="true"
             >
-              <h1
+              <span
                 className={cn(
                   "font-display text-[25vw] md:text-[30vw] uppercase leading-none text-current whitespace-nowrap select-none rotate-90 md:rotate-0 gpu-accelerated",
                   currentCategory.bg !== "black" && "text-black",
                 )}
               >
                 {currentCategory.title}
-              </h1>
+              </span>
             </motion.div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
@@ -300,9 +335,13 @@ export const Menu = () => {
                     animate={{ width: 40 }}
                     transition={{ duration: 1 }}
                     className="h-1 bg-accent"
+                    aria-hidden="true"
                   />
                   <div className="flex items-baseline gap-3 md:gap-4">
-                    <span className="text-accent text-sm md:text-2xl font-bold tabular-nums">
+                    <span
+                      className="text-accent text-sm md:text-2xl font-bold tabular-nums"
+                      aria-hidden="true"
+                    >
                       {(activeIdx + 1).toString().padStart(2, "0")}
                     </span>
                     <h2 className="font-display text-4xl md:text-[8vw] uppercase tracking-tighter leading-[0.85]">
@@ -316,6 +355,7 @@ export const Menu = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 }}
                   className="font-handwriting text-2xl md:text-5xl text-accent -rotate-3 md:-translate-y-8 whitespace-nowrap shrink-0"
+                  aria-hidden="true"
                 >
                   Selected with Care
                 </motion.p>
@@ -356,9 +396,12 @@ export const Menu = () => {
               </div>
 
               {/* Menu Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-2 md:gap-y-4">
+              <ul
+                className="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-2 md:gap-y-4"
+                role="list"
+              >
                 {currentCategory.items.map((item, itemIdx) => (
-                  <motion.div
+                  <motion.li
                     key={`${currentCategory.title}-${item.name}`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -374,7 +417,10 @@ export const Menu = () => {
                   >
                     <div className="flex flex-col gap-1.5 md:gap-2 max-w-[70%]">
                       <div className="flex items-center gap-2 md:gap-3">
-                        <span className="text-[9px] md:text-[10px] opacity-30 font-bold tabular-nums">
+                        <span
+                          className="text-[9px] md:text-[10px] opacity-30 font-bold tabular-nums"
+                          aria-hidden="true"
+                        >
                           {(itemIdx + 1).toString().padStart(2, "0")}
                         </span>
                         <h3 className="text-lg md:text-3xl font-display uppercase tracking-tight group-hover:text-accent transition-colors duration-500">
@@ -394,18 +440,25 @@ export const Menu = () => {
                     </div>
 
                     <div className="flex flex-col items-end pt-1">
-                      <span className="text-accent font-display text-xl md:text-4xl tabular-nums leading-none tracking-tighter transition-transform group-hover:scale-110">
-                        {item.price}
+                      <span
+                        className="text-accent font-display text-xl md:text-4xl tabular-nums leading-none tracking-tighter transition-transform group-hover:scale-110"
+                        aria-label={formatPriceForSR(item.price)}
+                      >
+                        <span aria-hidden="true">{item.price}</span>
+                        <span className="sr-only">
+                          {formatPriceForSR(item.price)}
+                        </span>
                       </span>
                       <div
                         className={cn(
                           "w-0 h-px bg-accent group-hover:w-full transition-all duration-700 mt-1",
                         )}
+                        aria-hidden="true"
                       />
                     </div>
-                  </motion.div>
+                  </motion.li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             {/* Integrated Pricing Notice & Footer - Now part of the transition card */}
@@ -420,7 +473,10 @@ export const Menu = () => {
                     )}
                   >
                     <div className="flex items-center gap-3 mb-6">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      <div
+                        className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"
+                        aria-hidden="true"
+                      />
                       <h4 className="font-display text-accent text-lg md:text-xl uppercase tracking-widest">
                         Service Notes
                       </h4>
@@ -449,10 +505,18 @@ export const Menu = () => {
                         Administrative
                       </span>
                       <div className="flex flex-col gap-4">
-                        <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center group text-left">
+                        <button
+                          type="button"
+                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center group text-left focus-visible-ring rounded"
+                          aria-label="Download our menu as a PDF document"
+                        >
                           Download PDF Menu
                         </button>
-                        <button className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center group text-left">
+                        <button
+                          type="button"
+                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center group text-left focus-visible-ring rounded"
+                          aria-label="View our terms of service"
+                        >
                           Terms of Service
                         </button>
                       </div>
@@ -464,17 +528,27 @@ export const Menu = () => {
                       </span>
                       <div className="flex flex-col gap-4">
                         <a
-                          href="#"
-                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
+                          href="https://www.instagram.com/karena.kopi/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group focus-visible-ring rounded"
+                          aria-label="Follow us on Instagram (opens in new tab)"
                         >
-                          <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
+                          <span
+                            className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all"
+                            aria-hidden="true"
+                          />
                           Instagram
                         </a>
                         <a
-                          href="#"
-                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group"
+                          href="mailto:hello@karenakopi.com"
+                          className="text-current hover:text-accent transition-colors font-display uppercase tracking-[0.2em] text-xs md:text-sm flex items-center gap-3 group focus-visible-ring rounded"
+                          aria-label="Send us an email inquiry"
                         >
-                          <span className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all" />
+                          <span
+                            className="w-2 h-2 rounded-full border border-current opacity-20 group-hover:bg-accent group-hover:border-accent transition-all"
+                            aria-hidden="true"
+                          />
                           Inquiries
                         </a>
                       </div>

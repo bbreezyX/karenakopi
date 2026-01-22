@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ChevronDown, MapPin } from "lucide-react";
 import {
@@ -66,10 +67,13 @@ export const Navbar = () => {
             aria-label="Toggle Theme via Logo"
           >
             <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-foreground/10 overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:border-accent shadow-2xl shrink-0 bg-background relative">
-              <img
+              <Image
                 src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/49bab24e-3063-4590-bd49-384b4e3b5168/1768888456410-b7936e3e/karenakopi_logo.jpg"
                 alt="Karena Kopi Logo"
-                className="w-full h-full object-cover"
+                fill
+                sizes="64px"
+                className="object-cover"
+                priority
               />
               {/* Subtle Indicator (Optional/Micro-animation) */}
               <div

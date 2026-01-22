@@ -42,3 +42,5 @@ next-env.d.ts
 SKILL.md
 .shared
 .agent
+.claude
+PROPOSAL.md

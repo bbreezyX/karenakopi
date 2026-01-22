@@ -1,18 +1,24 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export const BrandStory = () => {
   return (
     <section
       id="story"
+      aria-labelledby="brand-story-title"
       className="relative bg-background overflow-hidden py-24 md:py-0"
     >
       {/* Texture & Grain Overlay */}
-      <div className="noise-overlay" />
-      {/* Background Text Decor */}
-      <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.02] select-none">
+      <div className="noise-overlay" aria-hidden="true" />
+
+      {/* Background Text Decor - Hidden from AT */}
+      <div
+        className="absolute top-0 right-0 w-full h-full flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.02] select-none"
+        aria-hidden="true"
+      >
         <span className="font-display text-[40vw] uppercase leading-none gpu-accelerated text-foreground">
           Ritual
         </span>
@@ -29,7 +35,10 @@ export const BrandStory = () => {
             <span className="text-accent text-[10px] font-bold uppercase tracking-[0.4em] mb-8 block">
               Our Philosophy
             </span>
-            <h2 className="font-serif-italic text-4xl md:text-[4.5vw] leading-[1.1] mb-12">
+            <h2
+              id="brand-story-title"
+              className="font-serif-italic text-4xl md:text-[4.5vw] leading-[1.1] mb-12"
+            >
               &quot;Coffee is more than a drink; it is the silent curator of
               human connection and the catalyst for every enduring ritual.&quot;
             </h2>
@@ -43,11 +52,13 @@ export const BrandStory = () => {
             className="flex items-center space-x-6 mb-12"
           >
             <div className="w-16 h-16 rounded-full overflow-hidden grayscale border border-foreground/10 p-1">
-              <div className="w-full h-full rounded-full overflow-hidden">
-                <img
+              <div className="w-full h-full rounded-full overflow-hidden relative">
+                <Image
                   src="/1674611675874.jpg"
-                  className="w-full h-full object-cover"
-                  alt="Founder"
+                  fill
+                  sizes="64px"
+                  className="object-cover"
+                  alt="Fuad Firdaus, Founder and Head Roaster of Karena Kopi, in professional attire"
                 />
               </div>
             </div>
@@ -82,10 +93,13 @@ export const BrandStory = () => {
               transition={{ duration: 1, delay: 1 }}
               className="border-l border-foreground/10 pl-8 hidden md:block"
             >
-              <p className="text-[10px] uppercase font-bold tracking-[0.2em] mb-4">
+              <h3 className="text-[10px] uppercase font-bold tracking-[0.2em] mb-4">
                 The Standard
-              </p>
-              <ul className="space-y-2 text-[10px] uppercase font-bold tracking-[0.1em]">
+              </h3>
+              <ul
+                className="space-y-2 text-[10px] uppercase font-bold tracking-[0.1em]"
+                role="list"
+              >
                 <li>• Direct Trade Sourcing</li>
                 <li>• Micro-Batch Roasting</li>
                 <li>• Seasonal Curation</li>
@@ -96,14 +110,20 @@ export const BrandStory = () => {
 
         <div className="w-full md:w-1/2 px-4 md:px-0">
           <div className="relative overflow-hidden h-[60vh] md:min-h-[80vh] group rounded-[3rem] md:rounded-[4rem] border border-foreground/10">
-            <motion.img
+            <motion.div
               initial={{ scale: 1.2 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-              src="/cafeinterior.jpeg"
-              className="absolute inset-0 w-full h-full object-cover grayscale brightness-90 dark:brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-2000 ease-in-out gpu-accelerated"
-              alt="Cafe Interior"
-            />
+              className="absolute inset-0 w-full h-full gpu-accelerated"
+            >
+              <Image
+                src="/cafeinterior.jpeg"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover grayscale brightness-90 dark:brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-2000 ease-in-out"
+                alt="Karena Kopi flagship cafe interior featuring minimalist design with warm wood tones, industrial elements, and comfortable seating areas"
+              />
+            </motion.div>
 
             {/* Overlay Floating Badge */}
             <motion.div
@@ -112,6 +132,7 @@ export const BrandStory = () => {
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 1.2 }}
               className="absolute top-8 right-8 md:top-12 md:right-12 w-20 h-20 md:w-24 md:h-24 border border-accent/30 rounded-full flex flex-col items-center justify-center p-4 backdrop-blur-sm bg-background/20"
+              aria-hidden="true"
             >
               <span className="font-display text-[7px] md:text-[8px] text-accent font-bold uppercase tracking-wider text-center leading-tight">
                 Flagship <br /> Experience
@@ -129,9 +150,9 @@ export const BrandStory = () => {
                 <span className="text-accent text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] mb-2 md:mb-4 block">
                   The Space
                 </span>
-                <h4 className="text-xl md:text-3xl font-display mb-3 md:mb-6 uppercase tracking-tighter leading-none">
+                <h3 className="text-xl md:text-3xl font-display mb-3 md:mb-6 uppercase tracking-tighter leading-none">
                   Minimalism in <br className="hidden md:block" /> Motion
-                </h4>
+                </h3>
                 <p className="text-[10px] md:text-xs text-foreground/50 mb-5 md:mb-8 leading-relaxed max-w-[200px] md:max-w-none">
                   Small-batch roasting & minimal design in Jambi.
                 </p>
@@ -139,10 +160,14 @@ export const BrandStory = () => {
                   href="#visit"
                   whileHover={{ x: 10 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="group flex items-center space-x-3 text-[8px] md:text-[10px] uppercase font-bold tracking-[0.2em]"
+                  className="group flex items-center space-x-3 text-[8px] md:text-[10px] uppercase font-bold tracking-[0.2em] focus-visible-ring rounded"
+                  aria-label="Explore our flagship location and get directions"
                 >
                   <span>Explore</span>
-                  <div className="w-8 h-[1px] bg-accent group-hover:w-12 transition-all duration-500" />
+                  <div
+                    className="w-8 h-[1px] bg-accent group-hover:w-12 transition-all duration-500"
+                    aria-hidden="true"
+                  />
                 </motion.a>
               </div>
             </motion.div>

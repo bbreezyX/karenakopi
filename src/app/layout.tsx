@@ -40,7 +40,16 @@ export default function RootLayout({
       <body
         className={`${anton.variable} ${inter.variable} ${playfair.variable} ${caveat.variable} antialiased`}
       >
-        {children}
+        {/* Skip Link for Keyboard Navigation - WCAG 2.4.1 */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-background focus:text-foreground focus:px-6 focus:py-3 focus:rounded-full focus:outline focus:outline-2 focus:outline-accent focus:shadow-lg focus:font-display focus:text-sm focus:uppercase focus:tracking-widest"
+        >
+          Skip to main content
+        </a>
+        <main id="main-content" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
       </body>
     </html>
   );

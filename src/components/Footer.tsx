@@ -1,6 +1,5 @@
-"use client";
-
 import React from "react";
+import Image from "next/image";
 import { Instagram, Twitter, MessageSquare } from "lucide-react";
 
 export const Footer = () => {
@@ -10,11 +9,13 @@ export const Footer = () => {
         {/* Left Side: Brand & Info */}
         <div className="space-y-8 md:space-y-12">
           <div className="flex items-center gap-6">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-background/10 shrink-0">
-              <img
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border border-background/10 shrink-0 relative">
+              <Image
                 src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/hmac-uploads/uploads/49bab24e-3063-4590-bd49-384b4e3b5168/1768888456410-b7936e3e/karenakopi_logo.jpg"
                 alt="Karena Kopi Logo"
-                className="w-full h-full object-cover"
+                fill
+                sizes="80px"
+                className="object-cover"
               />
             </div>
             <h2 className="font-display text-4xl md:text-5xl uppercase tracking-widest text-background">

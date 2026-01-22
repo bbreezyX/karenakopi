@@ -1,7 +1,42 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
+
+// ✅ HOISTED: Animation variants defined outside component for stable references
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const letterVariants: Variants = {
+  hidden: { opacity: 0, y: 100, rotateX: 90, skewX: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    skewX: 0,
+    transition: {
+      duration: 1.5,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
+
+// ✅ HOISTED: Static data pre-computed outside component
+const words = {
+  top: "Karena",
+  bottom: "Kopi",
+} as const;
+
+const topChars = words.top.split("");
+const bottomChars = words.bottom.split("");
 
 export const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -12,46 +47,17 @@ export const Hero = () => {
   const line2Y = useTransform(scrollY, [0, 1000], [0, 250]);
   const titleOpacity = useTransform(scrollY, [0, 600], [1, 0]);
 
-  const words = {
-    top: "Karena",
-    bottom: "Kopi",
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.5,
-      },
-    },
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 100, rotateX: 90, skewX: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      skewX: 0,
-      transition: {
-        duration: 1.5,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-  };
-
   return (
     <section
       ref={containerRef}
+      aria-label="Hero - Welcome to Karena Kopi Flagship"
       className="relative h-screen flex flex-col items-center justify-center bg-background overflow-hidden px-6"
     >
       {/* Texture & Grain Overlay */}
-      <div className="noise-overlay" />
+      <div className="noise-overlay" aria-hidden="true" />
 
-      {/* SVG filter for "Liquid" distortion */}
-      <svg className="hidden">
+      {/* SVG filter for "Liquid" distortion - Hidden from AT */}
+      <svg className="hidden" aria-hidden="true">
         <defs>
           <filter id="liquid-filter">
             <feTurbulence
@@ -77,14 +83,22 @@ export const Hero = () => {
         animate="visible"
         variants={containerVariants}
         style={{ opacity: titleOpacity }}
+        role="presentation"
       >
-        {/* Line 1: Karena */}
+        {/* Accessible heading for screen readers */}
+        <h1 className="sr-only">
+          Karena Kopi Flagship - Your Favorite Coffee Dealer in Town,
+          Established 2020
+        </h1>
+
+        {/* Line 1: Karena - Decorative visual text */}
         <motion.div
           style={{ y: line1Y }}
           className="relative flex justify-center perspective-1000 px-20"
+          aria-hidden="true"
         >
           <div className="flex pb-2 md:pb-4">
-            {words.top.split("").map((char, i) =>
+            {topChars.map((char, i) =>
               char === " " ? (
                 <span key={i}>&nbsp;</span>
               ) : (
@@ -105,6 +119,7 @@ export const Hero = () => {
         <motion.div
           style={{ y: line2Y }}
           className="relative flex flex-col items-center mt-0 md:-mt-[5vw] perspective-1000 px-20"
+          aria-hidden="true"
         >
           {/* Overlapping Flagship Script - DESKTOP ONLY */}
           <motion.div
@@ -119,7 +134,7 @@ export const Hero = () => {
           </motion.div>
 
           <div className="flex">
-            {words.bottom.split("").map((char, i) =>
+            {bottomChars.map((char, i) =>
               char === " " ? (
                 <span key={i}>&nbsp;</span>
               ) : (
@@ -141,6 +156,7 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 1 }}
             className="md:hidden flex flex-col items-center gap-6 mt-8 px-4"
+            aria-hidden="true"
           >
             <div className="flex flex-col items-center gap-1 mb-2">
               <span className="font-handwriting text-accent text-5xl lowercase leading-none">
@@ -168,12 +184,16 @@ export const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2.2, duration: 1 }}
-              className="flex flex-col items-center gap-3 cursor-pointer group pointer-events-auto border-t border-foreground/5 pt-6"
+              className="flex flex-col items-center gap-3 cursor-pointer group pointer-events-auto border-t border-foreground/5 pt-6 focus-visible-ring rounded-lg"
+              aria-label="Explore our menu - scroll down to view coffee and food options"
             >
               <span className="font-display text-[9px] text-foreground/30 tracking-[0.4em] uppercase">
                 Explore
               </span>
-              <div className="w-px h-12 bg-gradient-to-b from-accent to-transparent overflow-hidden">
+              <div
+                className="w-px h-12 bg-gradient-to-b from-accent to-transparent overflow-hidden"
+                aria-hidden="true"
+              >
                 <motion.div
                   className="w-full h-full bg-foreground origin-top"
                   animate={{ y: ["-100%", "100%"] }}
@@ -193,6 +213,7 @@ export const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2, duration: 1 }}
           className="hidden md:flex items-center gap-4"
+          aria-hidden="true"
         >
           <div className="w-12 h-px bg-accent" />
           <span className="font-display text-foreground/20 text-sm tracking-[0.3em] uppercase">
@@ -206,12 +227,16 @@ export const Hero = () => {
           initial={{ opacity: 0, scaleY: 0 }}
           animate={{ opacity: 1, scaleY: 1 }}
           transition={{ delay: 2.2, duration: 1 }}
-          className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0"
+          className="hidden md:flex flex-col items-center gap-3 md:gap-4 cursor-pointer group pointer-events-auto md:absolute md:left-1/2 md:-translate-x-1/2 md:bottom-0 focus-visible-ring rounded-lg"
+          aria-label="Explore our menu - scroll down to view coffee and food options"
         >
           <span className="font-display text-[9px] md:text-[10px] text-foreground/30 tracking-[0.4em] uppercase transition-colors group-hover:text-accent">
             Explore
           </span>
-          <div className="w-px h-12 md:h-24 bg-gradient-to-b from-accent to-transparent overflow-hidden">
+          <div
+            className="w-px h-12 md:h-24 bg-gradient-to-b from-accent to-transparent overflow-hidden"
+            aria-hidden="true"
+          >
             <motion.div
               className="w-full h-full bg-foreground origin-top"
               animate={{ y: ["-100%", "100%"] }}
@@ -226,6 +251,7 @@ export const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 2.1, duration: 1 }}
           className="text-right hidden md:block"
+          aria-hidden="true"
         >
           <span className="block text-foreground/30 font-display text-sm tracking-[0.2em] uppercase">
             Your Favorite Coffee Dealer in Town.
